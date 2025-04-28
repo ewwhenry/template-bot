@@ -1,6 +1,6 @@
 import { Player, Track } from "lavalink-client";
-import Bot from "src/core/Bot";
-import { formatMS_HHMMSS } from "src/utils/misc";
+import Bot from "../../core/Bot";
+import { formatMS_HHMMSS } from "../../utils/misc";
 
 export default {
   data: {

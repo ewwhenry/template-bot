@@ -27,7 +27,7 @@ const options = {
 @LocalesT("commands.avatar.name", "commands.avatar.description")
 @Options(options)
 export default class AvatarCommand extends Command {
-  async run(ctx: CommandContext<typeof options>) {
+  override async run(ctx: CommandContext<typeof options>) {
     const user = ctx.options.user || ctx.author;
     const avatarUrl = user.avatarURL({ size: 1024 });
     return ctx.editOrReply({ content: avatarUrl });

@@ -5,7 +5,7 @@ import { Command, CommandContext, Declare } from "seyfert";
   description: "Pausa la música.",
 })
 export default class PauseCommand extends Command {
-  async run(ctx: CommandContext) {
+  override async run(ctx: CommandContext) {
     const { messages } = ctx.client.getLangs(
       (await ctx.guild())?.preferredLocale
     );

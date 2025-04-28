@@ -1,10 +1,12 @@
+process.loadEnvFile();
+
+// ES VERSION
 import { config } from "seyfert";
-import { CLIENT } from "./src/config";
 
 export default config.bot({
-  token: CLIENT.token,
+  token: process.env.DISCORD_CLIENT_TOKEN,
   locations: {
-    base: "src",
+    base: process.env.PROD ? "dist" : "src",
     commands: "commands",
     events: "events/discord",
     langs: "langs",

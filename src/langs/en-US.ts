@@ -1,4 +1,4 @@
-import { SearchResult, Track } from "lavalink-client";
+import type { Track } from "lavalink-client";
 
 export default {
   metadata: {

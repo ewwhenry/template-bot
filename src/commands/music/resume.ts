@@ -5,7 +5,7 @@ import { Command, CommandContext, Declare } from "seyfert";
   description: "Reproduce la música.",
 })
 export default class ResumeCommand extends Command {
-  async run(ctx: CommandContext) {
+  override async run(ctx: CommandContext) {
     const { messages } = ctx.client.getLangs(
       (await ctx.guild())?.preferredLocale
     );

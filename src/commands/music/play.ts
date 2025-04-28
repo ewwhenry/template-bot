@@ -10,7 +10,7 @@ import { SearchPlatform, SearchResult, Track } from "lavalink-client";
 import { permissionsFor } from "../../utils/perms";
 import { getVoiceChannel } from "../../utils/voice";
 import { formatMS_HHMMSS } from "../../utils/misc";
-import { MessageFlags } from "seyfert/lib/types";
+import { PermissionFlagsBits, Permissions } from "seyfert/lib/types";
 
 const autocompleteMap = new Map();
 
@@ -52,7 +52,7 @@ const options = {
       }
 
       const botPermissions = await permissionsFor(voicechannel, clientMember);
-      if (!botPermissions.has("Connect") || !botPermissions.has("Speak")) {
+      if (!botPermissions.has(["Connect", "Speak"])) {
         await ctx.respond([
           {
             name: messages.voice.NOT_ABLE_TO_CONNECT_OR_SPEAK,
@@ -157,7 +157,7 @@ const options = {
 })
 @Options(options)
 export default class PlayCommand extends Command {
-  async run(ctx: CommandContext<typeof options>) {
+  override async run(ctx: CommandContext<typeof options>) {
     const { messages } = ctx.client.getLangs(
       (await ctx.guild())?.preferredLocale
     );
@@ -169,16 +169,16 @@ export default class PlayCommand extends Command {
     if (!voicechannel)
       return ctx.editOrReply({
         content: messages.voice.JOIN_CHANNEL,
-        flags: MessageFlags.Ephemeral,
+        flags: 64,
       });
 
     await ctx.deferReply();
 
     const permissions = await permissionsFor(voicechannel, clientMember);
-    if (!permissions.has("Connect") || !permissions.has("Speak"))
+    if (!permissions.has(["Connect", "Speak"]))
       return ctx.editOrReply({
         content: messages.voice.NOT_ABLE_TO_CONNECT_OR_SPEAK,
-        flags: MessageFlags.Ephemeral,
+        flags: 64,
       });
 
     const platform = ctx.options.fuente;
@@ -221,7 +221,7 @@ export default class PlayCommand extends Command {
     if (player.voiceChannelId !== voicechannel.id)
       return ctx.editOrReply({
         content: messages.voice.NOT_SAME_CHANNEL,
-        flags: MessageFlags.Ephemeral,
+        flags: 64,
       });
 
     const response = (fromAutoComplete ||

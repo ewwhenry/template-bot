@@ -19,7 +19,7 @@ const options = {
 })
 @Options(options)
 export default class SkipCommand extends Command {
-  async run(ctx: CommandContext<typeof options>) {
+  override async run(ctx: CommandContext<typeof options>) {
     const { messages } = ctx.client.getLangs(
       (await ctx.guild())?.preferredLocale
     );

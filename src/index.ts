@@ -6,7 +6,9 @@ bot.start().then(() => {
   if (shouldIUpdateCommands(bot)) {
     bot.logger.info("Updating commands...");
     bot
-      .uploadCommands()
+      .uploadCommands({
+        cachePath: "./commands.json",
+      })
       .then(() => {
         bot.logger.info("Commands updated successfully");
       })

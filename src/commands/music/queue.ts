@@ -1,12 +1,11 @@
 import { Command, Declare, CommandContext, Embed } from "seyfert";
-import { MessageFlags } from "seyfert/lib/types";
 
 @Declare({
   name: "queue",
   description: "Ver la cola de canciones",
 })
 export default class QueueCommand extends Command {
-  async run(ctx: CommandContext) {
+  override async run(ctx: CommandContext) {
     if (!ctx.guildId) return;
     const { messages } = ctx.client.getLangs(
       (await ctx.guild())?.preferredLocale
@@ -16,7 +15,7 @@ export default class QueueCommand extends Command {
     if (!player)
       return ctx.editOrReply({
         content: "There is no player in this guild.",
-        flags: MessageFlags.Ephemeral,
+        flags: 64,
       });
 
     const queue = player.queue.tracks.map((track, i) => {

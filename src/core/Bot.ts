@@ -1,10 +1,10 @@
 import { Client, ClientOptions } from "seyfert";
 import LavaManager from "./LavaManager";
-import { LavalinkManager } from "lavalink-client/dist/types";
+import { LavalinkManager } from "lavalink-client";
 import { CLIENT } from "../config";
 import { LavalinkManagerEvents } from "../utils/customEventLoader";
 import enUS from "src/langs/en-US";
-import { getGuildLocaleById } from "src/utils/misc";
+import { getGuildLocaleById } from "../utils/misc";
 
 export default class Bot extends Client {
   default_volume = 100;

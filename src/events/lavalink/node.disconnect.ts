@@ -1,5 +1,5 @@
 import { LavalinkNode } from "lavalink-client";
-import Bot from "src/core/Bot";
+import Bot from "../../core/Bot";
 
 export default {
   data: {

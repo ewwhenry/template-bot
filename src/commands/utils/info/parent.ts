@@ -1,4 +1,4 @@
-import { Command, Declare, CommandContext, Options } from "seyfert";
+import { Command, Declare, Options } from "seyfert";
 import ServerInfoCommand from "./server.command";
 
 @Declare({
