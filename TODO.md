@@ -1,3 +1,3 @@
-[ ] Migrate from embed to components V2
+- [ ] Migrate from embed to components V2
 
-[ ] Document all code
+- [ ] Document all code
